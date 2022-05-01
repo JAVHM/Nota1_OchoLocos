@@ -1,0 +1,74 @@
+import kotlin.random.Random
+
+class CartaObj {
+    var valor: String
+    var palo: String
+
+    constructor(valor: String, palo: String) {
+        this.valor = valor
+        this.palo = palo
+    }
+}
+
+var mazo = mutableListOf<CartaObj>()
+var mesa = mutableListOf<CartaObj>()
+
+val carta1 = CartaObj("1","diamante")
+mazo.add(carta1)
+val carta2 = CartaObj("2","diamante")
+mazo.add(carta2)
+val carta3 = CartaObj("3","diamante")
+mazo.add(carta3)
+val carta4 = CartaObj("4","diamante")
+mazo.add(carta4)
+val carta5 = CartaObj("5","diamante")
+mazo.add(carta5)
+val carta6 = CartaObj("6","diamante")
+mazo.add(carta6)
+val carta7 = CartaObj("7","diamante")
+mazo.add(carta7)
+val carta8 = CartaObj("8","diamante")
+mazo.add(carta8)
+val carta9 = CartaObj("9","diamante")
+mazo.add(carta9)
+val carta10 = CartaObj("10","diamante")
+mazo.add(carta10)
+val carta11 = CartaObj("J","diamante")
+mazo.add(carta11)
+val carta12 = CartaObj("Q","diamante")
+mazo.add(carta12)
+val carta13 = CartaObj("K","diamante")
+mazo.add(carta13)
+
+
+class JugadorObj {
+    val idj: Int
+    val nombre: String
+    var cartasMano: MutableList<CartaObj>
+
+    constructor(idj: Int, nombre: String, cartasMano: MutableList<CartaObj>) {
+        this.idj = idj
+        this.nombre = nombre
+        this.cartasMano = cartasMano
+    }
+}
+val jugador1 = JugadorObj(1,"R", mutableListOf<CartaObj>())
+val jugador2 = JugadorObj(2,"J", mutableListOf<CartaObj>())
+val jugador3 = JugadorObj(3,"A", mutableListOf<CartaObj>())
+
+var ordenJugadores = arrayOf(jugador1,jugador2,jugador3)
+
+fun CartasJugador(mazo: MutableList<CartaObj>, jugador: JugadorObj, n : Int) {
+    for (i in 0..n) {
+        var temp = Random.nextInt(0, mazo.size+0)
+        var carta = mazo[temp]
+        mazo.removeAt(temp)
+        jugador.cartasMano.add(carta)
+        print("Carta agregada a " + jugador.nombre + ": " + jugador.cartasMano.last().valor + "|" + jugador.cartasMano.last().palo)
+    }
+}
+fun ComenzarPartida(){
+    CartasJugador(mazo, jugador1, 8)
+}
+
+ComenzarPartida()
