@@ -11,7 +11,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_juego)//Proceso de inflado
 
         val jugadores=CrearJugadores();
-        val nombre=findViewById<TextView>(R.id.JugTxt)
+        val nombre=findViewById<TextView>(R.id.JugTxt);
+        val mazo=BarajearMazo();
+
         nombre.text=jugadores[1].nombre;
     }
     class CartaObj {
