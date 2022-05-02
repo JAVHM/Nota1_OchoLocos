@@ -139,4 +139,13 @@ class Juego {
         return mazo
     }
 
+    fun ComenzarPartida(){
+        val jugadores = CrearJugadores()
+        val mazo = CrearMazoPrincipal()
+
+    }
+
+    fun Turno(jugadorTurno: JugadorObj){
+
+    }
 }
