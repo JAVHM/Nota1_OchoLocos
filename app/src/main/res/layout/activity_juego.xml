@@ -7,7 +7,7 @@
 
     <Button
         android:id="@+id/CartaM"
-        android:layout_width="110dp"
+        android:layout_width="120dp"
         android:layout_height="190dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
@@ -38,7 +38,7 @@
         android:textSize="20sp"></TextView>
 
     <LinearLayout
-        android:id="@+id/CartZona"
+        android:id="@+id/CartaZona"
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:layout_alignParentBottom="true"

@@ -2,7 +2,9 @@ package pe.edu.ulima.pm
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.LinearLayout
 import android.widget.TextView
+import pe.edu.ulima.pm.views.CartaView
 import java.util.function.Predicate
 
 class MainActivity : AppCompatActivity() {
@@ -10,11 +12,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_juego)//Proceso de inflado
 
-        val jugadores=CrearJugadores();
-        val nombre=findViewById<TextView>(R.id.JugTxt);
-        val mazo=BarajearMazo();
+        var mazo=CrearMazoPrincipal()
+        mazo=BarajearMazo(mazo);
+        var jugadores=CrearJugadores();
+        jugadores=BarajearJugadores(jugadores,mazo)
 
-        nombre.text=jugadores[1].nombre;
+        var nombre=findViewById<TextView>(R.id.JugTxt);
+        var cartaInicial=findViewById<TextView>(R.id.CartaM)
+
+        var mesa= mutableListOf<CartaObj>()
+        ActualizarMesa(mesa,mazo)
+        cartaInicial.text= mesa[0].valor+" "+mesa[0].palo
+        nombre.text=jugadores[0].nombre;
     }
     class CartaObj {
         var valor: String
@@ -139,31 +148,31 @@ class MainActivity : AppCompatActivity() {
         mazo.add(carta39)
 
 //    Picas
-        val carta40 = CartaObj("1","pica")
+        val carta40 = CartaObj("1","espada")
         mazo.add(carta40)
-        val carta41 = CartaObj("2","pica")
+        val carta41 = CartaObj("2","espada")
         mazo.add(carta41)
-        val carta42 = CartaObj("3","pica")
+        val carta42 = CartaObj("3","espada")
         mazo.add(carta42)
-        val carta43 = CartaObj("4","pica")
+        val carta43 = CartaObj("4","espada")
         mazo.add(carta43)
-        val carta44 = CartaObj("5","pica")
+        val carta44 = CartaObj("5","espada")
         mazo.add(carta44)
-        val carta45 = CartaObj("6","pica")
+        val carta45 = CartaObj("6","espada")
         mazo.add(carta45)
-        val carta46 = CartaObj("7","pica")
+        val carta46 = CartaObj("7","espada")
         mazo.add(carta46)
-        val carta47 = CartaObj("8","pica")
+        val carta47 = CartaObj("8","espada")
         mazo.add(carta47)
-        val carta48 = CartaObj("9","pica")
+        val carta48 = CartaObj("9","espada")
         mazo.add(carta48)
-        val carta49 = CartaObj("10","pica")
+        val carta49 = CartaObj("10","espada")
         mazo.add(carta49)
-        val carta50 = CartaObj("J","pica")
+        val carta50 = CartaObj("J","espada")
         mazo.add(carta50)
-        val carta51 = CartaObj("Q","pica")
+        val carta51 = CartaObj("Q","espada")
         mazo.add(carta51)
-        val carta52 = CartaObj("K","pica")
+        val carta52 = CartaObj("K","espada")
         mazo.add(carta52)
 
 //    Dios mio ayudame
@@ -174,11 +183,65 @@ class MainActivity : AppCompatActivity() {
         print("Cantida de mazo: "+mazoBarajeado.size)
         return mazoBarajeado
     }
-
-    fun ComenzarPartida(){
-        println("JUEGO COMIENZA")
-        var mazo = CrearMazoPrincipal() //Creamos una lista con las cartas
-        mazo = BarajearMazo(mazo) //Aleatorizamos el orden de las cartas
-
+    fun AddCartasJugador(jugadorObj: JugadorObj, mazo: MutableList<CartaObj>, n: Int){
+        for (i in 1..n){
+            jugadorObj.cartasMano.add(mazo[0])
+            println("Anadir a " + jugadorObj.nombre + " la carta : " + mazo[0].palo + "|" +mazo[0].valor)
+            mazo.removeAt(0)
+        }
     }
+    fun BarajearJugadores(jugadores: MutableList<JugadorObj>, mazo: MutableList<CartaObj>): MutableList<JugadorObj>{
+        val jugadorBarajeado = jugadores.asSequence().shuffled().take(52).toMutableList()
+        for (j in jugadorBarajeado){
+            println(j.nombre)
+            AddCartasJugador(j, mazo, 8)
+        }
+        return jugadorBarajeado
+    }
+    fun ActualizarMesa(mesa: MutableList<CartaObj>, mazo: MutableList<CartaObj>){
+        print(mazo.size)
+        mesa.add(mazo[0])
+        print(mazo.size)
+        mazo.removeAt(0)
+    }
+//    fun <T> remove(list: MutableList<T>, predicate: Predicate<T>) {
+//        list.removeIf { x: T -> predicate.test(x) }
+//    }
+
+    fun Turno(mazo: MutableList<CartaObj>, jugadorTurno: MutableList<JugadorObj>, mesa: MutableList<CartaObj>, idj:Int){
+        var idTemp = idj //idj no es modificable
+        var noPosee = true
+        var AreaCartas=findViewById<LinearLayout>(R.id.CartaZona);
+        if (jugadorTurno[idTemp].cartasMano.size == 0){
+
+        }
+        else{
+            for (cartaJ in jugadorTurno[idj].cartasMano){
+                var cartita=CartaView(this,cartaJ.palo)
+                AreaCartas.addView(cartita)
+                print(cartaJ.palo)
+                if (cartaJ.palo == mesa.last().palo || cartaJ.valor == mesa.last().valor) {
+                    noPosee = false
+                    var cartaRemove = Predicate { day: CartaObj -> day == cartaJ }
+                    mesa.add(cartaJ)
+                    mazo.add(mesa.first())
+                    mesa.removeAt(0)
+                    //remove(jugadorTurno[idj].cartasMano, cartaRemove)
+                    break
+                }
+            }
+            if (noPosee == true){
+                AddCartasJugador(jugadorTurno[idj], mazo, 1)
+            }
+            if (idj >= 2){
+
+                idTemp = 0
+            }else{
+                idTemp = idj + 1
+            }
+//            Turno(mazo, jugadorTurno, mesa, idTemp)
+        }
+    }
+
+
 }
