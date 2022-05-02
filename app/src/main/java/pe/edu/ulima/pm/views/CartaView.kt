@@ -18,7 +18,7 @@ class CartaView: View {
         val width = View.MeasureSpec.getSize(widthMeasureSpec)
         val height = View.MeasureSpec.getSize(heightMeasureSpec)
         size = Math.min(width, height)
-        setMeasuredDimension(size!!, (size!!*1.5f).toInt())
+        setMeasuredDimension(size!!, (size!!*1f).toInt())
     }
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
@@ -30,11 +30,11 @@ class CartaView: View {
         //PARA EL TEXTO --> en vez de paint , la variable text para el color de carta size etc
         var text = Paint(Paint.ANTI_ALIAS_FLAG)
         text.color = Color.BLACK
-        text.textSize = size!!/4f
+        text.textSize = size!!/2f
         //DRAWtEXT PARA EL TEXTO
         //dropLast : (1) para que bote el ultimo numero que representa el tipo de carta
 
-        canvas!!.drawText(numero!!.dropLast(1),size!!/15f,size!!/4f,text)
+        canvas!!.drawText(numero!!.dropLast(1),size!!/5f,size!!/5f,text)
     }
 
     fun drawFondo(canvas: Canvas?) {
@@ -46,7 +46,7 @@ class CartaView: View {
     fun drawBorde(canvas: Canvas?) {
         paint!!.color = Color.BLACK
         paint!!.style = Paint.Style.STROKE
-        paint!!.setStrokeWidth(size!!/15f)
-        canvas!!.drawRect(Rect(0, size!!, size!!, 0),paint!!)
+        paint!!.setStrokeWidth(size!!/20f)
+        canvas!!.drawRect(Rect(1, size!!, size!!, 0),paint!!)
     }
 }

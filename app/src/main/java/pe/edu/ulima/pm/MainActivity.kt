@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         ActualizarMesa(mesa,mazo)
         cartaInicial.text= mesa[0].valor+" "+mesa[0].palo
         nombre.text=jugadores[0].nombre;
+        Turno(mazo,jugadores,mesa,0)
     }
     class CartaObj {
         var valor: String
@@ -217,7 +218,7 @@ class MainActivity : AppCompatActivity() {
         }
         else{
             for (cartaJ in jugadorTurno[idj].cartasMano){
-                var cartita=CartaView(this,cartaJ.palo)
+                var cartita=CartaView(this,cartaJ.valor)
                 AreaCartas.addView(cartita)
                 print(cartaJ.palo)
                 if (cartaJ.palo == mesa.last().palo || cartaJ.valor == mesa.last().valor) {
