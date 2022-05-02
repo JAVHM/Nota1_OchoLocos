@@ -10,36 +10,37 @@
         android:layout_width="110dp"
         android:layout_height="190dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="105dp"
+        android:layout_marginTop="50dp"
         android:text="1"
         />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="330dp"
+        android:layout_marginTop="280dp"
         android:layout_toRightOf="@+id/CartaM"
         android:text="Pasar"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="330dp"
+        android:layout_marginTop="280dp"
         android:layout_toLeftOf="@+id/CartaM"
         android:text="Robar" />
+
     <TextView
+        android:id="@+id/JugTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Jugador X"
         android:layout_marginLeft="20dp"
-        android:textSize="20sp"
-        android:layout_marginTop="400dp"
-        ></TextView>
+        android:layout_marginTop="350dp"
+        android:text="Jugador X"
+        android:textSize="20sp"></TextView>
 
     <LinearLayout
         android:id="@+id/CartZona"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
