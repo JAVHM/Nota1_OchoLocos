@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <Button
-        android:id="@+id/button2"
-        android:layout_width="139dp"
-        android:layout_height="338dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="119dp"
-        tools:layout_editor_absoluteY="102dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:id="@+id/CartaM"
+        android:layout_width="110dp"
+        android:layout_height="190dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="105dp"
+        android:text="1"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="330dp"
+        android:layout_toRightOf="@+id/CartaM"
+        android:text="Pasar"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="330dp"
+        android:layout_toLeftOf="@+id/CartaM"
+        android:text="Robar" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jugador X"
+        android:layout_marginLeft="20dp"
+        android:textSize="20sp"
+        android:layout_marginTop="400dp"
+        ></TextView>
+
+    <LinearLayout
+        android:id="@+id/CartZona"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+</RelativeLayout>

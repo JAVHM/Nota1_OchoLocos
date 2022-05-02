@@ -8,13 +8,9 @@ import pe.edu.ulima.pm.views.ULFaceView
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_juego)//Proceso de inflado
 
-        setContentView(R.layout.activity_main)//Proceso de inflado
-
-        val faceView = findViewById<ULFaceView>(R.id.cara)
-        faceView.setOnClickListener { v ->
-            val face = v as ULFaceView
-            face.mBocaHeight += 50
-        }
+        val cartaMesa=findViewById<TextView>(R.id.CartaM)
+        cartaMesa.text="prueba"
     }
 }
