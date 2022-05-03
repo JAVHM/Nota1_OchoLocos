@@ -78,17 +78,18 @@ class CartaView: View {
         }
         var textoT=Paint(Paint.ANTI_ALIAS_FLAG)
         textoT.color=Color.BLACK
-        textoT.textSize=mSize/5f
+        textoT.textSize=70f
 
-        canvas!!.drawText(numero!!,mSizeII!!/10f,mSize!!/4f,textoT)
+
+        canvas!!.drawText(numero!!,15f,90f,textoT)
         //numero BOT
         var textoB=Paint(Paint.ANTI_ALIAS_FLAG)
         textoB.color=Color.BLACK
-        textoB.textSize=mSize/5f
-        canvas!!.drawText(numero!!,mSizeII!!/1.3f,mSize!!/1f,textoT)
+        textoB.textSize=70f
+        canvas!!.drawText(numero!!,200f,220f,textoB)
         //simbolos
         var icono=Paint(Paint.ANTI_ALIAS_FLAG)
-        icono.textSize=mSize/10f
+        icono.textSize=100f
         icono.textAlign=Paint.Align.CENTER
         val xPos = (canvas.width / 2)
         val yPos = (canvas.height / 2 - (icono.descent() + icono.ascent()) / 2)

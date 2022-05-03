@@ -212,7 +212,7 @@ class MainActivity : AppCompatActivity() {
     fun Turno(mazo: MutableList<CartaObj>, jugadorTurno: MutableList<JugadorObj>, mesa: MutableList<CartaObj>, idj:Int){
         var idTemp = idj //idj no es modificable
         var noPosee = true
-        var AreaCartas=findViewById<LinearLayout>(R.id.CartaZona);
+        val AreaCartas=findViewById<LinearLayout>(R.id.CartaZona);
         if (jugadorTurno[idTemp].cartasMano.size == 0){
 
         }
