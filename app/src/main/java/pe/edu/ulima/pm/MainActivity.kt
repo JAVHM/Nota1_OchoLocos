@@ -218,7 +218,7 @@ class MainActivity : AppCompatActivity() {
         }
         else{
             for (cartaJ in jugadorTurno[idj].cartasMano){
-                var cartita=CartaView(this,cartaJ.valor)
+                var cartita=CartaView(this,cartaJ.valor.toString(),cartaJ.palo)
                 AreaCartas.addView(cartita)
                 print(cartaJ.palo)
                 if (cartaJ.palo == mesa.last().palo || cartaJ.valor == mesa.last().valor) {
