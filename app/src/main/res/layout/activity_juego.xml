@@ -15,6 +15,7 @@
         />
 
     <Button
+        android:id="@+id/Pasar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="280dp"
@@ -22,6 +23,7 @@
         android:text="Pasar" />
 
     <Button
+        android:id="@+id/Robar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="280dp"
@@ -32,9 +34,12 @@
         android:id="@+id/JugTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="50dp"
         android:text="Jugador X"
+        android:gravity="center"
+        android:layout_below="@id/CartaM"
+        android:layout_toRightOf="@id/Robar"
+        android:layout_toLeftOf="@id/Pasar"
         android:textSize="20sp"></TextView>
 
     <LinearLayout
