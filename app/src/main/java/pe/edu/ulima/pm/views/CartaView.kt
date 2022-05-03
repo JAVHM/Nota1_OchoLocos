@@ -28,25 +28,7 @@ class CartaView: View {
         drawCarta(canvas)
     }
     fun drawCarta(canvas: Canvas?) {
-        var foto: Bitmap?=null
-        //when para hacer un switch
-        when (numero!![numero!!.length-1].toString()) {
-            //BTMAP para pegar imagenes
-            "1" -> foto = BitmapFactory.decodeResource(resources, R.drawable.corazon)
-            "2" -> foto = BitmapFactory.decodeResource(resources, R.drawable.trebol)
-            "3" -> foto = BitmapFactory.decodeResource(resources, R.drawable.espada)
-            "4" -> foto = BitmapFactory.decodeResource(resources, R.drawable.corazon)
-        }
-        //tamaños
-        canvas?.drawBitmap(foto!!, null, Rect(width/4,+height/5, width*3/4, height*3/5),paint)
-        //PARA EL TEXTO --> en vez de paint , la variable text para el color de carta size etc
-        var text = Paint(Paint.ANTI_ALIAS_FLAG)
-        text.color = Color.BLACK
-        text.textSize = size!!/4f
-        //DRAWtEXT PARA EL TEXTO
-        //dropLast : (1) para que bote el ultimo numero que representa el tipo de carta
 
-        canvas!!.drawText(numero!!.dropLast(1),size!!/15f,size!!/4f,text)
     }
 
     fun drawFondo(canvas: Canvas?) {
