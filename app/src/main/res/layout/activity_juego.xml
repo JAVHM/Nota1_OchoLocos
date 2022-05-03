@@ -11,8 +11,7 @@
         android:layout_height="190dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:text="1"
-        />
+        android:text="1" />
 
     <Button
         android:id="@+id/Pasar"
@@ -43,12 +42,248 @@
         android:textSize="20sp"></TextView>
 
     <LinearLayout
-        android:id="@+id/CartaZona"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="1dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:weightSum="2"
+        android:orientation="vertical" >
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"></LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:id="@+id/CartaZona"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="200dp"
+                android:layout_alignParentBottom="true"
+                android:weightSum="4"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:weightSum="5"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/Mazo1"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/Mazo2"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/Mazo3"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/Mazo4"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/Mazo5"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:weightSum="5"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/Mazo6"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/Mazo7"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/Mazo8"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/Mazo9"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/Mazo10"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:weightSum="5"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/Mazo11"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/Mazo12"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/Mazo13"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/Mazo14"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/Mazo15"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:weightSum="5"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/Mazo16"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/Mazo17"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/Mazo18"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/Mazo19"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/Mazo20"
+                        android:layout_width="60dp"
+                        android:layout_height="95dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="1" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
