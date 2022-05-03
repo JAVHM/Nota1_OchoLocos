@@ -86,7 +86,7 @@ class CartaView: View {
         var textoB=Paint(Paint.ANTI_ALIAS_FLAG)
         textoB.color=Color.BLACK
         textoB.textSize=70f
-        canvas!!.drawText(numero!!,200f,220f,textoB)
+        canvas!!.drawText(numero!!,180f,220f,textoB)
         //simbolos
         var icono=Paint(Paint.ANTI_ALIAS_FLAG)
         icono.textSize=100f

@@ -221,15 +221,15 @@ class MainActivity : AppCompatActivity() {
                 var cartita=CartaView(this,cartaJ.valor.toString(),cartaJ.palo)
                 AreaCartas.addView(cartita)
                 print(cartaJ.palo)
-                if (cartaJ.palo == mesa.last().palo || cartaJ.valor == mesa.last().valor) {
-                    noPosee = false
-                    var cartaRemove = Predicate { day: CartaObj -> day == cartaJ }
-                    mesa.add(cartaJ)
-                    mazo.add(mesa.first())
-                    mesa.removeAt(0)
-                    //remove(jugadorTurno[idj].cartasMano, cartaRemove)
-                    break
-                }
+//                if (cartaJ.palo == mesa.last().palo || cartaJ.valor == mesa.last().valor) {
+//                    noPosee = false
+//                    var cartaRemove = Predicate { day: CartaObj -> day == cartaJ }
+//                    mesa.add(cartaJ)
+//                    mazo.add(mesa.first())
+//                    mesa.removeAt(0)
+//                    //remove(jugadorTurno[idj].cartasMano, cartaRemove)
+//                    break
+//                }
             }
             if (noPosee == true){
                 AddCartasJugador(jugadorTurno[idj], mazo, 1)
