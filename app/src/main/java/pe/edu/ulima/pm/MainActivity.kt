@@ -212,14 +212,14 @@ class MainActivity : AppCompatActivity() {
     fun Turno(mazo: MutableList<CartaObj>, jugadorTurno: MutableList<JugadorObj>, mesa: MutableList<CartaObj>, idj:Int){
         var idTemp = idj //idj no es modificable
         var noPosee = true
-        val AreaCartas=findViewById<LinearLayout>(R.id.CartaZona);
+        var AreaCartas=findViewById<LinearLayout>(R.id.CartaZona);
         if (jugadorTurno[idTemp].cartasMano.size == 0){
 
         }
         else{
             for (cartaJ in jugadorTurno[idj].cartasMano){
                 var cartita=CartaView(this,cartaJ.valor.toString(),cartaJ.palo)
-                AreaCartas.addView(cartita)
+                AreaCartas.addView(cartita,400,250)
                 print(cartaJ.palo)
 //                if (cartaJ.palo == mesa.last().palo || cartaJ.valor == mesa.last().valor) {
 //                    noPosee = false

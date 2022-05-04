@@ -78,14 +78,14 @@ class CartaView: View {
         }
         var textoT=Paint(Paint.ANTI_ALIAS_FLAG)
         textoT.color=Color.BLACK
-        textoT.textSize=70f
+        textoT.textSize=60f
 
 
         canvas!!.drawText(numero!!,15f,90f,textoT)
         //numero BOT
         var textoB=Paint(Paint.ANTI_ALIAS_FLAG)
         textoB.color=Color.BLACK
-        textoB.textSize=70f
+        textoB.textSize=60f
         canvas!!.drawText(numero!!,180f,220f,textoB)
         //simbolos
         var icono=Paint(Paint.ANTI_ALIAS_FLAG)
