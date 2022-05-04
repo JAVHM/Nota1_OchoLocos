@@ -17,13 +17,14 @@ class MainActivity : AppCompatActivity() {
         var jugadores=CrearJugadores();
         jugadores=BarajearJugadores(jugadores,mazo)
 
-        var nombre=findViewById<TextView>(R.id.JugTxt);
-        var cartaInicial=findViewById<TextView>(R.id.CartaM)
+//        var nombre=findViewById<TextView>(R.id.JugTxt);
+//        var cartaInicial=findViewById<TextView>(R.id.CartaM)
 
         var mesa= mutableListOf<CartaObj>()
         ActualizarMesa(mesa,mazo)
-        cartaInicial.text= mesa[0].valor+" "+mesa[0].palo
-        nombre.text=jugadores[0].nombre;
+
+//        cartaInicial.text= mesa[0].valor+" "+mesa[0].palo
+//        nombre.text=jugadores[0].nombre;
         Turno(mazo,jugadores,mesa,0)
     }
     class CartaObj {
@@ -204,6 +205,9 @@ class MainActivity : AppCompatActivity() {
         mesa.add(mazo[0])
         print(mazo.size)
         mazo.removeAt(0)
+        var middle=CartaView(this,mesa[0].valor.toString(),mesa[0].palo)
+        var CartaMesa=findViewById<LinearLayout>(R.id.cartaMesa);
+        CartaMesa.addView(middle)
     }
 //    fun <T> remove(list: MutableList<T>, predicate: Predicate<T>) {
 //        list.removeIf { x: T -> predicate.test(x) }
