@@ -89,7 +89,7 @@ class CartaMesaView: View {
         canvas!!.drawText(numero!!,350f,400f,textoB)
         //simbolos
         var icono=Paint(Paint.ANTI_ALIAS_FLAG)
-        icono.textSize=100f
+        icono.textSize=150f
         icono.textAlign=Paint.Align.CENTER
         val xPos = (canvas.width / 2)
         val yPos = (canvas.height / 2 - (icono.descent() + icono.ascent()) / 2)
