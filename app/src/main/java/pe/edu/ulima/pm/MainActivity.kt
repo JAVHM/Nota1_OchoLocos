@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
+import pe.edu.ulima.pm.views.CartaMesaView
 import pe.edu.ulima.pm.views.CartaView
 import java.util.function.Predicate
 
@@ -205,7 +206,7 @@ class MainActivity : AppCompatActivity() {
         mesa.add(mazo[0])
         print(mazo.size)
         mazo.removeAt(0)
-        var middle=CartaView(this,mesa[0].valor.toString(),mesa[0].palo)
+        var middle= CartaMesaView(this,mesa[0].valor.toString(),mesa[0].palo)
         var CartaMesa=findViewById<LinearLayout>(R.id.cartaMesa);
         CartaMesa.addView(middle)
     }

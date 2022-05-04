@@ -4,37 +4,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="50dp"
+        android:paddingTop="20dp"
         android:id="@+id/cartaMesa"
         android:gravity="center"
         android:orientation="horizontal">
-
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="280dp"
-        android:layout_marginBottom="390dp">
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginLeft="20dp"
-            android:text="robar">
-        </Button>
+        android:layout_height="150dp"
+        android:orientation="horizontal">
         <Button
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginTop="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:text="robar"></Button>
+        <Button
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="150dp"
-        android:text="pasar"></Button>
+        android:layout_marginTop="50dp"
+        android:text="pasar">
+        </Button>
 
     </LinearLayout>
+
+    </LinearLayout>
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+
+<!--        android:layout_marginBottom="390dp">-->
+
+<!--        <Button-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="0dp"-->
+<!--            android:text="robar"></Button>-->
+
+<!--        <Button-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginLeft="150dp"-->
+<!--            android:layout_marginTop="0dp"-->
+
+<!--            android:text="pasar"></Button>-->
+
+<!--    </LinearLayout>-->
 
 <!--    <Button-->
 <!--        android:id="@+id/CartaM"-->
