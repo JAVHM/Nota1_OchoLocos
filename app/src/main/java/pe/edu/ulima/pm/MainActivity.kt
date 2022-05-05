@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import pe.edu.ulima.pm.views.CartaMesaView
 import pe.edu.ulima.pm.views.CartaView
 import java.util.function.Predicate
@@ -212,6 +213,15 @@ class MainActivity : AppCompatActivity() {
         var middle= CartaMesaView(this,mesa[0].valor.toString(),mesa[0].palo)
         CartaMesa.addView(middle)
     }
+    fun MostrarAlertaVictoria(){
+        MaterialAlertDialogBuilder(this)
+            .setTitle("¡FELICIDADES!")
+            .setMessage("¡Has utilizado tu última carta y acabas de ganar el juego!")
+            .setPositiveButton("¡Bien!") {dialog, which ->
+                finish()
+            }
+            .show()
+    }
     @RequiresApi(Build.VERSION_CODES.N)
     fun <T> remove(list: MutableList<T>, predicate: Predicate<T>) {
         list.removeIf { x: T -> predicate.test(x) }
@@ -277,7 +287,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
         if (jugadorTurno[idTemp].cartasMano.size == 0){
-
+//            El jugador acaba de ganar
+            btnPasar.setOnClickListener{b ->
+                MostrarAlertaVictoria()
+            }
         }
         else{
             for (cartaJ in jugadorTurno[idj].cartasMano){
