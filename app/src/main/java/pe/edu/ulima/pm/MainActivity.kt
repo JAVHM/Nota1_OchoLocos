@@ -243,7 +243,7 @@ class MainActivity : AppCompatActivity() {
     }
     @RequiresApi(Build.VERSION_CODES.N)
     fun Turno(mazo: MutableList<CartaObj>, jugadorTurno: MutableList<JugadorObj>, mesa: MutableList<CartaObj>, idj:Int){
-        var nombre=findViewById<TextView>(R.id.JugTxt)
+        var nombre=findViewById<TextView>(R.id.Nombre)
         nombre.text=jugadorTurno[idj].nombre + "(" + jugadorTurno[idj].cartasMano.size + ")" ;
         println("Turno jugador " + jugadorTurno[idj].nombre)
         var idTemp = idj //idj no es modificable
