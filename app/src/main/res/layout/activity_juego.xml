@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondomesa">
-
+        android:background="@drawable/fondomesa">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="350dp"
@@ -31,7 +30,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
             <Button
                 android:layout_width="100dp"
@@ -54,38 +54,6 @@
         </LinearLayout>
 
     </LinearLayout>
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-
-    <!--        android:layout_marginBottom="390dp">-->
-
-    <!--        <Button-->
-    <!--            android:layout_width="100dp"-->
-    <!--            android:layout_height="60dp"-->
-    <!--            android:layout_centerHorizontal="true"-->
-    <!--            android:layout_marginLeft="20dp"-->
-    <!--            android:layout_marginTop="0dp"-->
-    <!--            android:text="robar"></Button>-->
-
-    <!--        <Button-->
-    <!--            android:layout_width="100dp"-->
-    <!--            android:layout_height="60dp"-->
-    <!--            android:layout_centerHorizontal="true"-->
-    <!--            android:layout_marginLeft="150dp"-->
-    <!--            android:layout_marginTop="0dp"-->
-
-    <!--            android:text="pasar"></Button>-->
-
-    <!--    </LinearLayout>-->
-
-    <!--    <Button-->
-    <!--        android:id="@+id/CartaM"-->
-    <!--        android:layout_width="120dp"-->
-    <!--        android:layout_height="190dp"-->
-    <!--        android:layout_centerHorizontal="true"-->
-    <!--        android:layout_marginTop="50dp"-->
-    <!--        android:text="1" />-->
 
 
     <LinearLayout
@@ -97,14 +65,15 @@
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#97590707"
             tools:ignore="SpeakableTextPresentCheck">
 
             <LinearLayout
                 android:id="@+id/CartaZona"
                 android:layout_width="match_parent"
-                android:layout_height="115dp"
-
-                android:orientation="horizontal"></LinearLayout>
+                android:layout_height="120dp"
+                android:orientation="horizontal"
+                android:paddingTop="12dp"></LinearLayout>
         </HorizontalScrollView>
     </LinearLayout>
 
