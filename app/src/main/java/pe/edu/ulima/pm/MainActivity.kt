@@ -1,5 +1,6 @@
 package pe.edu.ulima.pm
 
+import android.content.DialogInterface
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +12,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import pe.edu.ulima.pm.views.CartaMesaView
 import pe.edu.ulima.pm.views.CartaView
 import java.util.function.Predicate
+
 
 class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.N)
@@ -217,7 +219,11 @@ class MainActivity : AppCompatActivity() {
         MaterialAlertDialogBuilder(this)
             .setTitle("¡FELICIDADES!")
             .setMessage("¡Has utilizado tu última carta y acabas de ganar el juego!")
-            .setPositiveButton("¡Bien!") {dialog, which ->
+            .setPositiveButton("¡¡Juguemos de nuevo!!") {dialog, which ->
+                finish()
+                startActivity(getIntent())
+            }
+            .setNegativeButton("Salir del juego"){dialog, which ->
                 finish()
             }
             .show()
