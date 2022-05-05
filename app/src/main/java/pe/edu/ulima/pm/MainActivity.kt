@@ -3,7 +3,6 @@ package pe.edu.ulima.pm
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -191,8 +190,7 @@ class MainActivity : AppCompatActivity() {
     }
     fun AddCartasJugador(jugadorObj: JugadorObj, mazo: MutableList<CartaObj>, n: Int){
         for (i in 1..n){
-            //jugadorObj.cartasMano.add(mazo[0])
-            jugadorObj.cartasMano = (listOf<CartaObj>(mazo[0]).toMutableList() + jugadorObj.cartasMano) as MutableList<CartaObj>
+            jugadorObj.cartasMano.add(mazo[0])
             println("Anadir a " + jugadorObj.nombre + " la carta : " + mazo[0].palo + "|" +mazo[0].valor)
             mazo.removeAt(0)
         }
@@ -245,7 +243,6 @@ class MainActivity : AppCompatActivity() {
     }
     @RequiresApi(Build.VERSION_CODES.N)
     fun Turno(mazo: MutableList<CartaObj>, jugadorTurno: MutableList<JugadorObj>, mesa: MutableList<CartaObj>, idj:Int){
-
         var nombre=findViewById<TextView>(R.id.JugTxt)
         nombre.text=jugadorTurno[idj].nombre + "(" + jugadorTurno[idj].cartasMano.size + ")" ;
         println("Turno jugador " + jugadorTurno[idj].nombre)
@@ -253,18 +250,6 @@ class MainActivity : AppCompatActivity() {
         var noPosee = true
         var AreaCartas=findViewById<LinearLayout>(R.id.CartaZona);
         AreaCartas.removeAllViews()
-
-        var btnRobar : Button =  findViewById(R.id.robar)
-        btnRobar.setOnClickListener { b ->
-            AddCartasJugador(jugadorTurno[idj], mazo, 1)
-            Turno(mazo, jugadorTurno, mesa, idTemp)
-        }
-        var btnPasar : Button =  findViewById(R.id.pasar)
-        btnPasar.setOnClickListener { b ->
-            Turno(mazo, jugadorTurno, mesa, SiguienteJugadorIdj(idTemp))
-        }
-
-
         if (jugadorTurno[idTemp].cartasMano.size == 0){
 
         }
@@ -280,7 +265,9 @@ class MainActivity : AppCompatActivity() {
                         println("Es usable")
                         noPosee = false
                         ActualizarJugadorAMesa(mesa, jugadorTurno[idTemp],cartaJ)
-                        Turno(mazo, jugadorTurno, mesa, SiguienteJugadorIdj(idTemp))
+                        idTemp = SiguienteJugadorIdj(idTemp)
+                        Turno(mazo, jugadorTurno, mesa, idTemp)
+                        idTemp = SiguienteJugadorIdj(idTemp);
                     } else{
                       println("no es usable")
                     }

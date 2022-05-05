@@ -47,11 +47,17 @@ class CartaView: View {
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-
+        drawFondo(canvas!!)
         drawCarta(canvas!!)
         drawCaracteres(canvas!!)
     }
+    private fun drawFondo(canvas: Canvas) {
+        mPaint!!.color = Color.WHITE
+        mPaint!!.style = Paint.Style.FILL
+        mPaint!!.setStrokeWidth(mSizeII!!/12f)
+        canvas.drawRect(0f, mSizeII!!, mSizeII, 0f, mPaint)
 
+    }
     private fun drawCarta(canvas: Canvas) {
         mPaint!!.color = Color.BLACK
         mPaint!!.style = Paint.Style.STROKE
