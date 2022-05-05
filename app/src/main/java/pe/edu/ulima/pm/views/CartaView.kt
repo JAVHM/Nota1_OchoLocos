@@ -5,6 +5,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 
 class CartaView: View {
@@ -15,6 +16,9 @@ class CartaView: View {
     var mHeight: Float = 0f
     var numero : String ?= null
     var simbolo: String? =null;
+
+    private lateinit var mListener: (v : View) -> Unit
+
     constructor(context: Context, num: String, simb: String) : super(context) {
         //Crea una instancia a partir de XML
         numero =num
@@ -98,4 +102,14 @@ class CartaView: View {
 
     }
 
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        if(mListener != null){
+            mListener(this)
+            invalidate()
+        }
+        return super.onTouchEvent(event)
+    }
+    fun  setOnClickListener(listener : (v : View) -> Unit){
+        mListener = listener
+    }
 }

@@ -1,14 +1,17 @@
 package pe.edu.ulima.pm
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import pe.edu.ulima.pm.views.CartaMesaView
 import pe.edu.ulima.pm.views.CartaView
 import java.util.function.Predicate
 
 class MainActivity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_juego)//Proceso de inflado
@@ -202,22 +205,50 @@ class MainActivity : AppCompatActivity() {
         return jugadorBarajeado
     }
     fun ActualizarMesa(mesa: MutableList<CartaObj>, mazo: MutableList<CartaObj>){
-        print(mazo.size)
         mesa.add(mazo[0])
-        print(mazo.size)
         mazo.removeAt(0)
-        var middle= CartaMesaView(this,mesa[0].valor.toString(),mesa[0].palo)
         var CartaMesa=findViewById<LinearLayout>(R.id.cartaMesa);
+        CartaMesa.removeAllViews()
+        var middle= CartaMesaView(this,mesa[0].valor.toString(),mesa[0].palo)
         CartaMesa.addView(middle)
     }
-//    fun <T> remove(list: MutableList<T>, predicate: Predicate<T>) {
-//        list.removeIf { x: T -> predicate.test(x) }
-//    }
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun <T> remove(list: MutableList<T>, predicate: Predicate<T>) {
+        list.removeIf { x: T -> predicate.test(x) }
+    }
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun ActualizarJugadorAMesa(mesa: MutableList<CartaObj>, jugadorCartas: JugadorObj, carta: CartaObj){
+        //Remueve de la mesa
+        mesa.removeAt(0)
+        //Añade a la mesa
+        mesa.add(carta)
+        //Remueve del jugador
+        var cartaRemove = Predicate { day: CartaObj -> day == carta }
+        remove(jugadorCartas.cartasMano, cartaRemove)
+        //Limpia el view
+        var CartaMesa=findViewById<LinearLayout>(R.id.cartaMesa);
+        CartaMesa.removeAllViews()
+        //Instancia en el view
+        var middle= CartaMesaView(this,mesa[0].valor.toString(),mesa[0].palo)
+        CartaMesa.addView(middle)
+    }
 
+    fun SiguienteJugadorIdj(idj:Int) : Int{
+        var idTemp2 = 0
+        if (idj >= 2){
+            idTemp2 = 0
+        }else{
+            idTemp2 = idj + 1
+        }
+        return idTemp2
+    }
+    @RequiresApi(Build.VERSION_CODES.N)
     fun Turno(mazo: MutableList<CartaObj>, jugadorTurno: MutableList<JugadorObj>, mesa: MutableList<CartaObj>, idj:Int){
+        println("Turno jugador " + jugadorTurno[idj].nombre)
         var idTemp = idj //idj no es modificable
         var noPosee = true
         var AreaCartas=findViewById<LinearLayout>(R.id.CartaZona);
+        AreaCartas.removeAllViews()
         if (jugadorTurno[idTemp].cartasMano.size == 0){
 
         }
@@ -225,7 +256,21 @@ class MainActivity : AppCompatActivity() {
             for (cartaJ in jugadorTurno[idj].cartasMano){
                 var cartita=CartaView(this,cartaJ.valor.toString(),cartaJ.palo)
                 AreaCartas.addView(cartita,400,250)
-                print(cartaJ.palo)
+
+                cartita.setOnClickListener { c->
+                    val carta = c as CartaView
+                    println("Carta " + carta.numero + " de "+ carta.simbolo + " seleccionada")
+                    if (cartaJ.palo == mesa.last().palo || cartaJ.valor == mesa.last().valor){
+                        println("Es usable")
+                        noPosee = false
+                        ActualizarJugadorAMesa(mesa, jugadorTurno[idTemp],cartaJ)
+                        idTemp = SiguienteJugadorIdj(idTemp)
+                        Turno(mazo, jugadorTurno, mesa, idTemp)
+                        idTemp = SiguienteJugadorIdj(idTemp);
+                    } else{
+                      println("no es usable")
+                    }
+                }
 //                if (cartaJ.palo == mesa.last().palo || cartaJ.valor == mesa.last().valor) {
 //                    noPosee = false
 //                    var cartaRemove = Predicate { day: CartaObj -> day == cartaJ }
@@ -237,15 +282,8 @@ class MainActivity : AppCompatActivity() {
 //                }
             }
             if (noPosee == true){
-                AddCartasJugador(jugadorTurno[idj], mazo, 1)
+                //AddCartasJugador(jugadorTurno[idj], mazo, 1)
             }
-            if (idj >= 2){
-
-                idTemp = 0
-            }else{
-                idTemp = idj + 1
-            }
-//            Turno(mazo, jugadorTurno, mesa, idTemp)
         }
     }
 
