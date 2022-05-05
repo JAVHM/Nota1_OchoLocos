@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -215,9 +216,9 @@ class MainActivity : AppCompatActivity() {
         var middle= CartaMesaView(this,mesa[0].valor.toString(),mesa[0].palo)
         CartaMesa.addView(middle)
     }
-    fun MostrarAlertaVictoria(){
+    fun MostrarAlertaVictoria(jugadorObj: JugadorObj){
         MaterialAlertDialogBuilder(this)
-            .setTitle("¡FELICIDADES!")
+            .setTitle("¡Felicidades " + jugadorObj.nombre + "!")
             .setMessage("¡Has utilizado tu última carta y acabas de ganar el juego!")
             .setPositiveButton("¡¡Juguemos de nuevo!!") {dialog, which ->
                 finish()
@@ -234,6 +235,9 @@ class MainActivity : AppCompatActivity() {
     }
     @RequiresApi(Build.VERSION_CODES.N)
     fun ActualizarJugadorAMesa(mesa: MutableList<CartaObj>, jugadorCartas: JugadorObj, carta: CartaObj){
+        if(jugadorCartas.cartasMano.size == 1){
+            MostrarAlertaVictoria(jugadorCartas)
+        }
         //Remueve de la mesa
         mesa.removeAt(0)
         //Añade a la mesa
@@ -281,53 +285,54 @@ class MainActivity : AppCompatActivity() {
         //Buttons
         val btnPasar : Button = findViewById(R.id.pasar)
         val btnRobar : Button = findViewById(R.id.robar)
+        btnPasar.setVisibility(View.INVISIBLE)
+        btnRobar.setVisibility(View.INVISIBLE)
+        if (robado == true){
+            btnPasar.setVisibility(View.VISIBLE)
+        }else{
+            btnRobar.setVisibility(View.VISIBLE)
+        }
         btnPasar.setOnClickListener { b ->
             if(robado == true){
+
                 Turno(mazo, jugadorTurno, mesa, SiguienteJugadorIdj(idTemp), false, casoKtemp,kAcumtemp)
             }
         }
         btnRobar.setOnClickListener { b ->
             if (robado == false){
+                btnRobar.setVisibility(View.VISIBLE)
                 AddCartasJugador(jugadorTurno[idTemp], mazo , 1)
                 Turno(mazo, jugadorTurno, mesa, idTemp, true, casoKtemp,kAcumtemp)
             }
         }
-        if (jugadorTurno[idTemp].cartasMano.size == 0){
-//            El jugador acaba de ganar
-            btnPasar.setOnClickListener{b ->
-                MostrarAlertaVictoria()
-            }
-        }
-        else{
-            for (cartaJ in jugadorTurno[idj].cartasMano){
-                var cartita=CartaView(this,cartaJ.valor.toString(),cartaJ.palo)
-                AreaCartas.addView(cartita,400,250)
+        for (cartaJ in jugadorTurno[idj].cartasMano){
+            var cartita=CartaView(this,cartaJ.valor.toString(),cartaJ.palo)
+            AreaCartas.addView(cartita,400,250)
 
-                cartita.setOnClickListener { c->
-                    val carta = c as CartaView
-                    println("Carta " + carta.numero + " de "+ carta.simbolo + " seleccionada")
-                    if (cartaJ.palo == mesa.last().palo || cartaJ.valor == mesa.last().valor){
-                        println("Es usable")
-                        if (cartaJ.valor == "K"){
-                            kAcumtemp =+ 3
-                            ActualizarJugadorAMesa(mesa, jugadorTurno[idTemp],cartaJ)
-                            Turno(mazo, jugadorTurno, mesa, SiguienteJugadorIdj(idTemp), false, true, kAcumtemp)
-                        }else if (casoKtemp == true){
-                            println("Casao K, no juego K, se le suman cartas")
-                            ActualizarJugadorAMesa(mesa, jugadorTurno[idTemp],cartaJ)
-                            AddCartasJugador(jugadorTurno[idTemp], mazo , kAcum)
-                            Turno(mazo, jugadorTurno, mesa, SiguienteJugadorIdj(idTemp), false, false,0)
-                        }else{
-                            ActualizarJugadorAMesa(mesa, jugadorTurno[idTemp],cartaJ)
-                            Turno(mazo, jugadorTurno, mesa, SiguienteJugadorIdj(idTemp), false, false,0)
-                        }
-                        if(cartaJ.valor == "J"){
-                            ActualizarJugadorAMesa(mesa, jugadorTurno[idTemp],cartaJ)
-                            Turno(mazo, jugadorTurno, mesa, SiguienteJugadorIdj(SiguienteJugadorIdj(idTemp)), false, false,0)
-                        }
-                    } else{
-                      println("no es usable")
+            cartita.setOnClickListener { c->
+                val carta = c as CartaView
+                println("Carta " + carta.numero + " de "+ carta.simbolo + " seleccionada") //
+                if (cartaJ.palo == mesa.last().palo || cartaJ.valor == mesa.last().valor){
+                    println("Es usable")
+                    if (cartaJ.valor == "K"){
+                        kAcumtemp =+ 3
+                        ActualizarJugadorAMesa(mesa, jugadorTurno[idTemp],cartaJ)
+                        Turno(mazo, jugadorTurno, mesa, SiguienteJugadorIdj(idTemp), false, true, kAcumtemp)
+                    }else if (casoKtemp == true){
+                        println("Casao K, no juego K, se le suman cartas")
+                        ActualizarJugadorAMesa(mesa, jugadorTurno[idTemp],cartaJ)
+                        AddCartasJugador(jugadorTurno[idTemp], mazo , kAcum)
+                        Turno(mazo, jugadorTurno, mesa, SiguienteJugadorIdj(idTemp), false, false,0)
+                    }else{
+                        ActualizarJugadorAMesa(mesa, jugadorTurno[idTemp],cartaJ)
+                        Turno(mazo, jugadorTurno, mesa, SiguienteJugadorIdj(idTemp), false, false,0)
                     }
+                    if(cartaJ.valor == "J"){
+                        ActualizarJugadorAMesa(mesa, jugadorTurno[idTemp],cartaJ)
+                        Turno(mazo, jugadorTurno, mesa, SiguienteJugadorIdj(SiguienteJugadorIdj(idTemp)), false, false,0)
+                    }
+                } else{
+                    println("no es usable")
                 }
             }
         }
