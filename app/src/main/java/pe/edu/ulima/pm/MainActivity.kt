@@ -21,14 +21,13 @@ class MainActivity : AppCompatActivity() {
         var jugadores=CrearJugadores();
         jugadores=BarajearJugadores(jugadores,mazo)
 
-//        var nombre=findViewById<TextView>(R.id.JugTxt);
-//        var cartaInicial=findViewById<TextView>(R.id.CartaM)
+
 
         var mesa= mutableListOf<CartaObj>()
         ActualizarMesa(mesa,mazo)
 
 //        cartaInicial.text= mesa[0].valor+" "+mesa[0].palo
-//        nombre.text=jugadores[0].nombre;
+
         Turno(mazo,jugadores,mesa,0)
     }
     class CartaObj {
@@ -244,6 +243,8 @@ class MainActivity : AppCompatActivity() {
     }
     @RequiresApi(Build.VERSION_CODES.N)
     fun Turno(mazo: MutableList<CartaObj>, jugadorTurno: MutableList<JugadorObj>, mesa: MutableList<CartaObj>, idj:Int){
+        var nombre=findViewById<TextView>(R.id.JugTxt)
+        nombre.text=jugadorTurno[idj].nombre;
         println("Turno jugador " + jugadorTurno[idj].nombre)
         var idTemp = idj //idj no es modificable
         var noPosee = true
